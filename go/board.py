@@ -211,9 +211,26 @@ class Board(object):
         for row in range(0,self.N):
             s = str(self.N-row);
             hdr = s if len(s) > 1 else ' ' + s;
-            text = pad + hdr + ' ' + ' '.join([self.get_piece(state, row, col) for col in range(0,self.N)]) + pad + hdr + '\n';
-            all += text;
+            blank = ' ';
+            text = '';
+            for col in range(0,self.N):
+                if action and action != [False] and row == action[0] and col == action[1]:
+                    text += '(' + self.get_piece(state, row, col) + ')';
+                    blank = '';
+                else:
+                    text += blank + self.get_piece(state, row, col);
+                    blank = ' ';
+
+            all += pad + hdr + text + pad + hdr + '\n';
         all += '   ' + pad + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
+        if action and action != [False]:
+            player = 'Black' if self.current_player(state) == 1 else 'White';
+            pos = self.to_notation(action);
+            all += "{0} played {1}".format(player, pos);
+        if action and action == [False]:
+            player = 'Black' if self.current_player(state) == 1 else 'White';
+            all += "{0} passed".format(player);
+
         return all;
 
     # required by framework
@@ -367,10 +384,9 @@ class Board(object):
 
     # required by framework
     def winner_message(self, winners):
-        black = winners[1];
-        white = winners[2];
-        if black==white:
-            return "Draw.";
-        if black > white:
-            return "Winner: Black (Player 1).";
-        return "Winner: White (Player 2).";
+        winners = sorted((v, k) for k, v in winners.items())
+        value, winner = winners[-1]
+        if value == 0.5:
+            return "Draw."
+        name = 'Black' if winner == '1' else 'White';
+        return "Winner: {0} - Player {1}.".format(name, winner)

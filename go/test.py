@@ -236,10 +236,14 @@ test_surr(b, s, 2, 2);
 test_capture(b, s, 2, 2);
 
 def test_play(b, s, row, col, black):
+    s2 = list(s);
+    s2[-1] = black;
+    s = tuple(s2);
     pos = b.get_position_name(row, col);
     s2 = b.play(s, row, col, black);
     if s2:
-        print(b.display(s2,None));
+        action = (row, col);
+        print(b.display(s2,action));
         print("{0} played at {1}".format('Black' if black else 'White', pos));
         print("");
         return s2;

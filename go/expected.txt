@@ -259,13 +259,13 @@ O captured at C3
 White can play at C3? False
 
    A B C D E
- 5 X . . . . 5
+ 5(X). . . . 5
  4 . . . . . 4
  3 . . . . . 3
  2 . . . . . 2
  1 . . . . . 1
    A B C D E
-
+Black played A5
 Black played at A5
 
 Black at A5 is an invalid move
@@ -273,23 +273,23 @@ Black at A5 is an invalid move
 White at A5 is an invalid move
 
    A B C D E
- 5 X O . . . 5
+ 5 X(O). . . 5
  4 . . . . . 4
  3 . . . . . 3
  2 . . . . . 2
  1 . . . . . 1
    A B C D E
-
+White played B5
 White played at B5
 
    A B C D E
  5 . O . . . 5
- 4 O . . . . 4
+ 4(O). . . . 4
  3 . . . . . 3
  2 . . . . . 2
  1 . . . . . 1
    A B C D E
-
+White played A4
 White played at A4
 
 

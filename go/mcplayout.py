@@ -28,7 +28,7 @@ while len(legal) > 1:
 
     s = b.next_state(history, a2);
 
-    print(b.display(s,None));
+    print(b.display(s,a2));
     print("{0} legal moves".format(len(legal)));
     print("{0} played at {1}".format('Black' if player == 1 else 'White', j));
 
