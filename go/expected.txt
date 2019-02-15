@@ -20,7 +20,6 @@
   1 . . . . . . . . . . . . . . . . . . .  1
     A B C D E F G H J K L M N O P Q R S T
 
-
     A B C D E F G H J K L
  11 . . . . . . . . . . . 11
  10 . . . . . . . . . . . 10
@@ -35,7 +34,6 @@
   1 . . . . . . . . . . .  1
     A B C D E F G H J K L
 
-
    A B C D E F G H J
  9 . . . . . . . . . 9
  8 . . . . . . . . . 8
@@ -48,7 +46,6 @@
  1 . . . . . . . . . 1
    A B C D E F G H J
 
-
    A B C D E
  5 . . . . . 5
  4 . . . . . 4
@@ -57,7 +54,6 @@
  1 . . . . . 1
    A B C D E
 
-
    A B C D E
  5 . . . . . 5
  4 . X . . . 4
@@ -65,7 +61,6 @@
  2 . . O . . 2
  1 . . . . . 1
    A B C D E
-
 
    A B C D E
  5 . . . . . 5
@@ -266,10 +261,12 @@ White can play at C3? False
  1 . . . . . 1
    A B C D E
 Black played A5
-Black played at A5
 
+
+forced turn for Black
 Black at A5 is an invalid move
 
+forced turn for White
 White at A5 is an invalid move
 
    A B C D E
@@ -280,8 +277,9 @@ White at A5 is an invalid move
  1 . . . . . 1
    A B C D E
 White played B5
-White played at B5
 
+
+forced turn for White
    A B C D E
  5 . O . . . 5
  4(O). . . . 4
@@ -290,7 +288,7 @@ White played at B5
  1 . . . . . 1
    A B C D E
 White played A4
-White played at A4
+
 
 
 legal_actions:
@@ -317,4 +315,49 @@ action B1=(4, 1) legal? True
 action C1=(4, 2) legal? True
 action D1=(4, 3) legal? True
 action E1=(4, 4) legal? True
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . . . . . 4
+ 3 . . . .(X)3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+Black played E3
+
+
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . .(X)10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . . . . . . . .  6
+  5 . . . . . . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played L10
+
+
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . .(X) 9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . . . . . . . .  6
+  5 . . . . . . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played L9
+
+
 

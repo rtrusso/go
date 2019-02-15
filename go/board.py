@@ -208,30 +208,33 @@ class Board(object):
             state = state['state'];
         if isinstance(action, str):
             action = self.to_compact_action(action);
-        pad = ' ' if self.N > 9 else '';
-        all = '   ' + pad + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
+        pad = ' ';
+        width = len(str(self.N));
+        all = pad + ''.join([' ']*width) + ' ' + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
         for row in range(0,self.N):
             s = str(self.N-row);
-            hdr = s if len(s) > 1 else ' ' + s;
+            hdr = s if len(s) == width else ' ' + s;
+            pad2 = pad;
             blank = ' ';
             text = '';
             for col in range(0,self.N):
                 if action and action != [False] and row == action[0] and col == action[1]:
                     text += '(' + self.get_piece(state, row, col) + ')';
                     blank = '';
+                    if col == self.N-1:
+                        pad2 = '';
                 else:
                     text += blank + self.get_piece(state, row, col);
                     blank = ' ';
-
-            all += pad + hdr + text + pad + hdr + '\n';
-        all += '   ' + pad + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
+            all += pad + hdr + text + pad2 + hdr + '\n';
+        all += pad + ''.join([' ']*width) + ' ' + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
         if action and action != [False]:
-            player = 'Black' if self.current_player(state) == 1 else 'White';
+            player = 'Black' if self.previous_player(state) == 1 else 'White';
             pos = self.to_notation(action);
-            all += "{0} played {1}".format(player, pos);
+            all += "{0} played {1}".format(player, pos) + '\n';
         if action and action == [False]:
-            player = 'Black' if self.current_player(state) == 1 else 'White';
-            all += "{0} passed".format(player);
+            player = 'Black' if self.previous_player(state) == 1 else 'White';
+            all += "{0} passed".format(player) + '\n';
 
         return all;
 

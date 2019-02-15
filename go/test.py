@@ -4,31 +4,26 @@ b = Board();
 b.N = 19;
 s = b.starting_state();
 print (b.display(s,None))
-print ("");
 
 b = Board();
 b.N = 11;
 s = b.starting_state();
 print (b.display(s,None));
-print ("");
 
 b = Board();
 b.N = 9;
 s = b.starting_state();
 print (b.display(s,None));
-print ("");
 
 b = Board();
 b.N = 5;
 s = b.starting_state();
 print (b.display(s,None));
-print ("");
 
 s = list(s);
 b.play_piece(s, 1, 1, True);
 b.play_piece(s, 3, 2, False);
 print(b.display(s,None));
-print ("");
 
 def test_surr(b, s, row, col):
     surr = b.surrounded(s, row, col);
@@ -236,15 +231,20 @@ test_surr(b, s, 2, 2);
 test_capture(b, s, 2, 2);
 
 def test_play(b, s, row, col, black):
-    s2 = list(s);
-    s2[-1] = black;
-    s = tuple(s2);
+    player = s[-1];
+    if black != player:
+        s2 = list(s);
+        s2[-1] = black;
+        s = tuple(s2);
+        print("forced turn for {0}".format('Black' if black else 'White'));
     pos = b.get_position_name(row, col);
     s2 = b.play(s, row, col, black);
     if s2:
+        s2 = list(s2);
+        s2[-1] = not black;
+        s2 = tuple(s2);
         action = (row, col);
         print(b.display(s2,action));
-        print("{0} played at {1}".format('Black' if black else 'White', pos));
         print("");
         return s2;
     else:
@@ -276,6 +276,22 @@ for a in legal:
     if not all((player, S) in stats for a, S in actions_states):
         count += 1;
     print("action {2}={0} legal? {1}".format(a2, l, j));
+print("");
 
+b = Board();
+b.N = 5;
+s = b.starting_state();
+s = test_play(b, s, 2, 4, True);
+print("");
 
+b = Board();
+b.N = 11;
+s = b.starting_state();
+s = test_play(b, s, 1, 10, True);
+print("");
+
+b = Board();
+b.N = 11;
+s = b.starting_state();
+s = test_play(b, s, 2, 10, True);
 print("");
