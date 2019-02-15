@@ -1,6 +1,22 @@
 Go
 ==
 
+This is a python implementation of the board game Go. It is compatible
+with the same board game framework used by
+[ultimate_tictactoe](https://github.com/jbradberry/ultimate_tictactoe).
+
+The idea with this project is to enable some experimentation with
+machine learning inspired by the AlphaGo and AlphaZero projects.
+
+Known Issues
+------------
+
+The author doesn't actually know how to play Go and is attempting to
+write correct code based on rule specifications.
+
+- There is some bug with not allowing play in previously-captured intersections.
+- Scoring is not implemented correctly.
+
 Requirements
 ------------
 
@@ -14,7 +30,7 @@ Getting Started
 To set up your local environment you should create a virtualenv and
 install everything into it.
 
-    $ mkvirtualenv go
+    $ virtualenv go
 
 Pip install this repo, either from a local copy,
 
@@ -48,6 +64,6 @@ To connect a client as a human player
     $ board-play.py go human
     $ board-play.py go human 192.168.1.1 8000   # with ip addr and port
 
-or with the provided AI player
+or with the AI player, see [jbradberry/mcts](https://github.com/rtrusso/mcts) (link to python3 update fork)
 
     $ board-play.py go jrb.mcts.uct

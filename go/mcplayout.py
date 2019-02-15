@@ -8,7 +8,9 @@ b.N = 11;
 s = b.starting_state();
 history = [s];
 legal = b.legal_actions(history);
+iter = 0;
 while len(legal) > 1:
+    iter += 1;
     a = choice(legal);
     j = b.to_json_action(a);
     a2 = b.to_compact_action(j);
@@ -47,6 +49,7 @@ history += [s];
 ended = b.is_ended(history);
 if not ended:
     print("Game not ended as expected");
+print("Game ends after {0} iterations".format(iter));
 
 win = b.win_values(history);
 print("time: {0:.3f}s".format(time()-t1));
