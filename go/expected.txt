@@ -1,0 +1,320 @@
+    A B C D E F G H J K L M N O P Q R S T
+ 19 . . . . . . . . . . . . . . . . . . . 19
+ 18 . . . . . . . . . . . . . . . . . . . 18
+ 17 . . . . . . . . . . . . . . . . . . . 17
+ 16 . . . . . . . . . . . . . . . . . . . 16
+ 15 . . . . . . . . . . . . . . . . . . . 15
+ 14 . . . . . . . . . . . . . . . . . . . 14
+ 13 . . . . . . . . . . . . . . . . . . . 13
+ 12 . . . . . . . . . . . . . . . . . . . 12
+ 11 . . . . . . . . . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . . . . . . . . . 10
+  9 . . . . . . . . . . . . . . . . . . .  9
+  8 . . . . . . . . . . . . . . . . . . .  8
+  7 . . . . . . . . . . . . . . . . . . .  7
+  6 . . . . . . . . . . . . . . . . . . .  6
+  5 . . . . . . . . . . . . . . . . . . .  5
+  4 . . . . . . . . . . . . . . . . . . .  4
+  3 . . . . . . . . . . . . . . . . . . .  3
+  2 . . . . . . . . . . . . . . . . . . .  2
+  1 . . . . . . . . . . . . . . . . . . .  1
+    A B C D E F G H J K L M N O P Q R S T
+
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . . . . . . . .  6
+  5 . . . . . . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+
+
+   A B C D E F G H J
+ 9 . . . . . . . . . 9
+ 8 . . . . . . . . . 8
+ 7 . . . . . . . . . 7
+ 6 . . . . . . . . . 6
+ 5 . . . . . . . . . 5
+ 4 . . . . . . . . . 4
+ 3 . . . . . . . . . 3
+ 2 . . . . . . . . . 2
+ 1 . . . . . . . . . 1
+   A B C D E F G H J
+
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . . . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . X . . . 4
+ 3 . . . . . 3
+ 2 . . O . . 2
+ 1 . . . . . 1
+   A B C D E
+
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . O . O . 4
+ 3 . . X . . 3
+ 2 . O . O . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at C3? False
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . . O . . 4
+ 3 . O X O . 3
+ 2 . . O . . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at C3? True
+
+   A B C D E
+ 5 . . O . . 5
+ 4 . O . O . 4
+ 3 . O X O . 3
+ 2 . . O . . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at C3? False
+
+   A B C D E
+ 5 . . O . . 5
+ 4 . O X O . 4
+ 3 . O X O . 3
+ 2 . . O . . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at C3? True
+
+   A B C D E
+ 5 X X O . . 5
+ 4 X O . . . 4
+ 3 O . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at A5? True
+
+   A B C D E
+ 5 X X O . . 5
+ 4 X O . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+X surrounded at A5? False
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . X . X . 4
+ 3 . . O . . 3
+ 2 . X . X . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? False
+
+   A B C D E
+ 5 . . . . . 5
+ 4 . . X . . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? True
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? False
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X O X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? True
+
+   A B C D E
+ 5 O O X . . 5
+ 4 O X . . . 4
+ 3 X . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at A5? True
+
+   A B C D E
+ 5 O O X . . 5
+ 4 O X . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at A5? False
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? False
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+White can play at C4? False
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+Black can play at C4? True
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+White can play at E1? True
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+Black can play at E1? True
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X O X . 4
+ 3 . X O X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O surrounded at C3? True
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . X . 4
+ 3 . X . X . 3
+ 2 . . X . . 2
+ 1 . . . . . 1
+   A B C D E
+
+O captured at C3
+White can play at C3? False
+
+   A B C D E
+ 5 X . . . . 5
+ 4 . . . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+Black played at A5
+
+Black at A5 is an invalid move
+
+White at A5 is an invalid move
+
+   A B C D E
+ 5 X O . . . 5
+ 4 . . . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+White played at B5
+
+   A B C D E
+ 5 . O . . . 5
+ 4 O . . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+
+White played at A4
+
+
+legal_actions:
+action [False] legal? True
+action (0, 2) legal? True
+action (0, 3) legal? True
+action (0, 4) legal? True
+action (1, 1) legal? True
+action (1, 2) legal? True
+action (1, 3) legal? True
+action (1, 4) legal? True
+action (2, 0) legal? True
+action (2, 1) legal? True
+action (2, 2) legal? True
+action (2, 3) legal? True
+action (2, 4) legal? True
+action (3, 0) legal? True
+action (3, 1) legal? True
+action (3, 2) legal? True
+action (3, 3) legal? True
+action (3, 4) legal? True
+action (4, 0) legal? True
+action (4, 1) legal? True
+action (4, 2) legal? True
+action (4, 3) legal? True
+action (4, 4) legal? True
+
