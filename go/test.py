@@ -271,7 +271,7 @@ for a in legal:
     actions_states = [(a2, s2)];
     if not all((player, S) in stats for a, S in actions_states):
         count += 1;
-    print("action {0} legal? {1}".format(a2, l));
+    print("action {2}={0} legal? {1}".format(a2, l, j));
 
 
 print("");

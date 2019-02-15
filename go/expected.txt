@@ -294,27 +294,27 @@ White played at A4
 
 
 legal_actions:
-action [False] legal? True
-action (0, 2) legal? True
-action (0, 3) legal? True
-action (0, 4) legal? True
-action (1, 1) legal? True
-action (1, 2) legal? True
-action (1, 3) legal? True
-action (1, 4) legal? True
-action (2, 0) legal? True
-action (2, 1) legal? True
-action (2, 2) legal? True
-action (2, 3) legal? True
-action (2, 4) legal? True
-action (3, 0) legal? True
-action (3, 1) legal? True
-action (3, 2) legal? True
-action (3, 3) legal? True
-action (3, 4) legal? True
-action (4, 0) legal? True
-action (4, 1) legal? True
-action (4, 2) legal? True
-action (4, 3) legal? True
-action (4, 4) legal? True
+action pass=[False] legal? True
+action C5=(0, 2) legal? True
+action D5=(0, 3) legal? True
+action E5=(0, 4) legal? True
+action B4=(1, 1) legal? True
+action C4=(1, 2) legal? True
+action D4=(1, 3) legal? True
+action E4=(1, 4) legal? True
+action A3=(2, 0) legal? True
+action B3=(2, 1) legal? True
+action C3=(2, 2) legal? True
+action D3=(2, 3) legal? True
+action E3=(2, 4) legal? True
+action A2=(3, 0) legal? True
+action B2=(3, 1) legal? True
+action C2=(3, 2) legal? True
+action D2=(3, 3) legal? True
+action E2=(3, 4) legal? True
+action A1=(4, 0) legal? True
+action B1=(4, 1) legal? True
+action C1=(4, 2) legal? True
+action D1=(4, 3) legal? True
+action E1=(4, 4) legal? True
 

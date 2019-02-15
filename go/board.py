@@ -227,11 +227,11 @@ class Board(object):
 
     # required by framework
     def to_compact_action(self, data):
-        return data;
+        return self.from_notation(data);
 
     # required by framework
     def to_json_action(self, action):
-        return action;
+        return self.to_notation(action);
 
     # required by framework
     def from_notation(self, notation):
@@ -240,12 +240,12 @@ class Board(object):
             return [False];
 
         if len(s) < 2:
-            raise ValueError("Invalid notation [{0}]".format(s));
+            return None;
 
         colname = s[0:1];
         row = s[1:];
         if not row.isdigit():
-            raise ValueError("Invalid notation [{0}".format(s));
+            return None;
 
         c = self.column_names.find(colname);
         r = self.N - int(row);
@@ -327,6 +327,13 @@ class Board(object):
 
     # required by framework
     def win_values(self, history):
+        points = self.points_values(history);
+        points[1] /= self.N*self.N;
+        points[2] /= self.N*self.N;
+        return points;
+
+    # required by framework
+    def points_values(self, history):
         state = history[-1];
         scores = {1:0, 2:0};
         # TODO: properly implement and support both Area Scoring and Territory Scoring
@@ -337,11 +344,26 @@ class Board(object):
                     scores[1] += 1;
                 if p == 'O':
                     scores[2] += 1;
+                if p == '.':
+                    index = 4 * row;
+                    bitmask = 1 << col;
+                    white_index = index+1;
+                    black_index = index+2;
+                    black_captured = (state[black_index] & bitmask) != 0;
+                    white_captured = (state[white_index] & bitmask) != 0;
+                    if black_captured and white_captured:
+                        raise ValueError("both black and white captured");
+                    if black_captured:
+                        scores[2] += 1;
+                    if white_captured:
+                        scores[1] += 1;
+        if scores[1] > (self.N*self.N):
+            raise ValueError("black scores more than board size");
+        if scores[2] > (self.N*self.N):
+            raise ValueError("white scores more than board size");
+        if scores[1] + scores[2] > (self.N*self.N):
+            raise ValueError("total score more than board size");
         return scores;
-
-    # required by framework
-    def points_values(self, history):
-        return self.win_values(history);
 
     # required by framework
     def winner_message(self, winners):
@@ -350,5 +372,5 @@ class Board(object):
         if black==white:
             return "Draw.";
         if black > white:
-            return "Winner: Player 1.";
-        return "Winner: Player 2.";
+            return "Winner: Black (Player 1).";
+        return "Winner: White (Player 2).";
