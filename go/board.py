@@ -206,6 +206,8 @@ class Board(object):
     def display(self, state, action, _unicode=True):
         if len(state)==2:
             state = state['state'];
+        if isinstance(action, str):
+            action = self.to_compact_action(action);
         pad = ' ' if self.N > 9 else '';
         all = '   ' + pad + ' '.join([self.column_names[x] for x in range(0,self.N)]) + '\n';
         for row in range(0,self.N):
@@ -388,5 +390,5 @@ class Board(object):
         value, winner = winners[-1]
         if value == 0.5:
             return "Draw."
-        name = 'Black' if winner == '1' else 'White';
+        name = 'Black' if str(winner) == '1' else 'White';
         return "Winner: {0} - Player {1}.".format(name, winner)
