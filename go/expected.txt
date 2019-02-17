@@ -250,8 +250,8 @@ O surrounded at C3? True
  1 . . . . . 1
    A B C D E
 
-O captured at C3
-White can play at C3? False
+O captured 2 stones at C3
+White can play at C3? True
 
    A B C D E
  5(X). . . . 5
@@ -361,3 +361,283 @@ Black played L9
 
 
 
+   A B C
+ 3 . .(X)3
+ 2 . . . 2
+ 1 . . . 1
+   A B C
+Black played C3
+
+
+forced turn for Black
+   A B C
+ 3 . . X 3
+ 2 .(X). 2
+ 1 . . . 1
+   A B C
+Black played B2
+
+
+forced turn for Black
+   A B C
+ 3 . . X 3
+ 2 . X . 2
+ 1(X). . 1
+   A B C
+Black played A1
+
+
+   A B C
+ 3 . . X 3
+ 2 . X(O)2
+ 1 X . . 1
+   A B C
+White played C2
+
+
+forced turn for White
+   A B C
+ 3 . . X 3
+ 2 . X O 2
+ 1 X(O). 1
+   A B C
+White played B1
+
+
+territory scores: {1: 3, 2: 1}
+
+   A B C D E
+ 5 . .(X). . 5
+ 4 . . . . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+Black played C5
+
+
+forced turn for Black
+   A B C D E
+ 5 . . X . . 5
+ 4 .(X). . . 4
+ 3 . . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+Black played B4
+
+
+forced turn for Black
+   A B C D E
+ 5 . . X . . 5
+ 4 . X . . . 4
+ 3(X). . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+Black played A3
+
+
+   A B C D E
+ 5 . . X . . 5
+ 4 . X(O). . 4
+ 3 X . . . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+White played C4
+
+
+forced turn for White
+   A B C D E
+ 5 . . X . . 5
+ 4 . X O . . 4
+ 3 X(O). . . 3
+ 2 . . . . . 2
+ 1 . . . . . 1
+   A B C D E
+White played B3
+
+
+territory scores: {1: 3, 2: 0}
+forced turn for White
+   A B C D E
+ 5 . . X . . 5
+ 4 . X O . . 4
+ 3 X O . . . 3
+ 2(O). . . . 2
+ 1 . . . . . 1
+   A B C D E
+White played A2
+
+
+forced turn for White
+   A B C D E
+ 5 . . X(O). 5
+ 4 . X O . . 4
+ 3 X O . . . 3
+ 2 O . . . . 2
+ 1 . . . . . 1
+   A B C D E
+White played D5
+
+
+territory scores: {1: 3, 2: 15}
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . . . . . . . .  6
+  5 . . . .(X). . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played E5
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . .(O). . . . . .  6
+  5 . . . . X . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+White played E6
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O(X). . . . .  6
+  5 . . . . X . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played F6
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . .(O)X . . . . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+White played D5
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O X .(X). . . .  5
+  4 . . . . . . . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played G5
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O X . X . . . .  5
+  4 . . . .(O). . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+White played E4
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O X . X . . . .  5
+  4 . . . . O(X). . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black played F4
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O .(O)X . . . .  5
+  4 . . . . O X . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+White played F5
+
+[SKIPPED ILLEGAL] in iter 9, E5 is not a legal play for Black
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O . O X . . . .  5
+  4 . . . . O X . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+Black passed
+
+    A B C D E F G H J K L
+ 11 . . . . . . . . . . . 11
+ 10 . . . . . . . . . . . 10
+  9 . . . . . . . . . . .  9
+  8 . . . . . . . . . . .  8
+  7 . . . . . . . . . . .  7
+  6 . . . . O X . . . . .  6
+  5 . . . O . O X . . . .  5
+  4 . . . . O X . . . . .  4
+  3 . . . . . . . . . . .  3
+  2 . . . . . . . . . . .  2
+  1 . . . . . . . . . . .  1
+    A B C D E F G H J K L
+White passed
+
+After 11 iterations, game ended
+Territory: {1: 0, 2: 1}
+1 black stones captured, 0 white stones captured
+win_values: {1: 0.024793388429752067, 2: 0.04132231404958678}
+win message: Winner: White - Player 2.

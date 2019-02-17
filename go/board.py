@@ -12,15 +12,13 @@ class Board(object):
         if col < 0 or col >= self.N:
             raise ValueError('bad col');
 
-        index = 4 * row;
+        index = 2 * row;
         bitmask = 1 << col;
         if not black:
             index = index + 1;
 
         # mark piece on the board
         state[index] |= bitmask;
-        # this flag marks that the piece was ever played on this position
-        state[index+2] |= bitmask;
         return;
 
     # private
@@ -31,7 +29,7 @@ class Board(object):
         if col < 0 or col >= self.N:
             raise ValueError('bad col');
 
-        index = 4 * row;
+        index = 2 * row;
         bitmask = 1 << col;
         black = state[index] & bitmask;
         if black != 0:
@@ -51,15 +49,11 @@ class Board(object):
         if col < 0 or col >= self.N:
             raise ValueError('bad col');
 
-        index = 4 * row;
+        index = 2 * row;
         bitmask = 1 << col;
         if (state[index] & bitmask) != 0:
             return True;
         if (state[index+1] & bitmask) != 0:
-            return True;
-        if (state[index+2] & bitmask) != 0:
-            return True;
-        if (state[index+3] & bitmask) != 0:
             return True;
 
         return False;
@@ -117,8 +111,16 @@ class Board(object):
         visited = [0 for x in range(self.N)];
         state2 = list(state);
         self.play_piece(state2, row, col, black);
+        otherpiece = 'O' if black else 'X';
+        captured = self.checked_capture(state2, row-1, col, otherpiece);
+        captured += self.checked_capture(state2, row+1, col, otherpiece);
+        captured += self.checked_capture(state2, row, col-1, otherpiece);
+        captured += self.checked_capture(state2, row, col+1, otherpiece);
         p = self.get_piece(state2, row, col);
-        return self.surrounded_helper(state2, row, col, p, visited);
+        if self.surrounded_helper(state2, row, col, p, visited):
+            return None;
+        state2[-3 if black else -4] += captured;
+        return state2;
 
     # private
     def get_position_name(self, row, col):
@@ -127,80 +129,132 @@ class Board(object):
         return "{0}{1}".format(letter, row_name);
 
     # private
-    def can_play(self, state, row, col, black):
+    def can_play_simple(self, state, row, col, black):
         if self.is_occupied(state, row, col):
             return False;
 
-        if self.check_suicide(state, row, col, black):
+        if not self.check_suicide(state, row, col, black):
             return False;
 
         return True;
 
+    # private
+    def can_play_superko(self, history, row, col, black):
+        state = history[-1];
+        if self.is_occupied(state, row, col):
+            return False;
+
+        state2 = self.check_suicide(state, row, col, black);
+        if not state2:
+            return False;
+
+        # positional superko
+        tuple_s2 = tuple(state2[0:(self.N*2)]);
+        for old_s in history:
+            if old_s[0:(self.N*2)] == tuple_s2:
+                return False;
+
+        return True;
+
+    # private
     def capture(self, state, row, col, p):
         if row < 0 or row >= self.N:
-            return;
+            return 0;
 
         if col < 0 or col >= self.N:
-            return;
+            return 0;
 
         p2 = self.get_piece(state, row, col);
         if p != p2:
-            return;
+            return 0;
 
         # clear the pieces from the board (offsets 0 and 1) but retain the history (offsets 3 and 4)
         bitmask = ~(1 << col);
-        index = 4 * row;
+        index = 2 * row;
         state[index] &= bitmask;
         state[index+1] &= bitmask;
-        self.capture(state, row+1, col, p);
-        self.capture(state, row-1, col, p);
-        self.capture(state, row, col+1, p);
-        self.capture(state, row, col-1, p);
-        return;
+        captured = 1;
+        captured += self.capture(state, row+1, col, p);
+        captured += self.capture(state, row-1, col, p);
+        captured += self.capture(state, row, col+1, p);
+        captured += self.capture(state, row, col-1, p);
+        return captured;
 
     def checked_capture(self, state, row, col, p):
         if row < 0 or row >= self.N:
-            return;
+            return 0;
         if col < 0 or col >= self.N:
-            return;
+            return 0;
         if self.get_piece(state, row, col) != p:
-            return;
+            return 0;
         if not self.surrounded(state, row, col):
-            return;
-        self.capture(state, row, col, p);
-        return;
+            return 0;
+        return self.capture(state, row, col, p);
+
+    def score_territory(self, state):
+        visited = [0 for x in range(self.N)];
+        scores = {1:0,2:0};
+        for row in range(0,self.N):
+            for col in range(0,self.N):
+                if not self.is_visited(visited, row, col) and self.get_piece(state, row, col)=='.':
+                    s = [0];
+                    p = self.check_territory(state, visited, row, col, 0, s);
+                    if p > 0:
+                        scores[p] += s[0];
+        return scores;
+
+    def check_territory(self, state, visited, row, col, player, score):
+        if row < 0 or row >= self.N:
+            return player;
+        if col < 0 or col >= self.N:
+            return player;
+        if self.is_visited(visited, row, col):
+            return player;
+        piece = self.get_piece(state, row, col);
+        if piece != '.':
+            v = 1 if piece == 'X' else 2;
+            if player == 0:
+                return v;
+            elif v != player:
+                return -1;
+            else:
+                return player;
+
+        self.visit(visited, row, col);
+        score[0] += 1;
+        player = self.check_territory(state, visited, row-1, col, player, score);
+        player = self.check_territory(state, visited, row+1, col, player, score);
+        player = self.check_territory(state, visited, row, col-1, player, score);
+        player = self.check_territory(state, visited, row, col+1, player, score);
+        return player;
 
     # private
     def play(self, state, row, col, black):
-        p = 'X' if black else 'O';
-        if not self.can_play(state, row, col, black):
+        occupied = self.is_occupied(state, row, col);
+        state2 = self.check_suicide(state, row, col, black);
+        if occupied or not state2:
             posname = self.get_position_name(row, col);
             piecename = 'Black' if black else 'White';
             print ("{0} at {1} is an invalid move".format(piecename, posname));
             return;
 
-        state2 = list(state);
-        self.play_piece(state2, row, col, black);
-        otherpiece = 'O' if black else 'X';
-        self.checked_capture(state2, row-1, col, otherpiece);
-        self.checked_capture(state2, row+1, col, otherpiece);
-        self.checked_capture(state2, row, col-1, otherpiece);
-        self.checked_capture(state2, row, col+1, otherpiece);
         return state2;
 
     # required by framework
     def starting_state(self):
-        # 4 bits per position:
+        # 2 bits per intersection (mutually exclusive):
         #   1 for Black present
         #   1 for White present
-        #   1 for Black *ever* present
-        #   1 for White *ever* present
+        #
+        # 1 integer for # of black stones captured
+        #
+        # 1 integer for # of white stones captured
         #
         # 1 boolean entry defining whether the prior action was a Pass
         #
         # 1 entry for the current player (True=Black, False=White)
         #
-        return tuple([0, 0, 0, 0] * self.N + [False, True]);
+        return tuple([0, 0] * self.N + [0, 0, False, True]);
 
     # required by framework
     def display(self, state, action, _unicode=True):
@@ -288,6 +342,7 @@ class Board(object):
         state = history[-1];
         if action == [False]:
             state2 = list(state);
+            state2[-1] = not state[-1];
             state2[-2] = True;
             return tuple(state2);
 
@@ -296,6 +351,7 @@ class Board(object):
         black = state[-1];
         state2 = self.play(state, row, col, black);
         state2[-1] = not black;
+        state2[-2] = False;
         return tuple(state2);
 
     # required by framework
@@ -303,11 +359,11 @@ class Board(object):
         if action == [False]:
             return True;
 
-        state = history[-1]
         row = action[0];
         col = action[1];
+        state = history[-1]
         black = state[-1];
-        return self.can_play(state, row, col, black);
+        return self.can_play_superko(history, row, col, black);
 
     # required by framework
     def legal_actions(self, history):
@@ -320,7 +376,7 @@ class Board(object):
         # scan the board for valid plays
         for row in range(0,self.N):
             for col in range(0,self.N):
-                if self.can_play(state, row, col, black):
+                if self.can_play_superko(history, row, col, black):
                     actions += [(row, col)];
 
         return actions;
@@ -367,18 +423,12 @@ class Board(object):
                 if p == 'O':
                     scores[2] += 1;
                 if p == '.':
-                    index = 4 * row;
-                    bitmask = 1 << col;
-                    white_index = index+1;
-                    black_index = index+2;
-                    black_captured = (state[black_index] & bitmask) != 0;
-                    white_captured = (state[white_index] & bitmask) != 0;
-                    if black_captured and white_captured:
-                        raise ValueError("both black and white captured");
-                    if black_captured:
-                        scores[2] += 1;
-                    if white_captured:
-                        scores[1] += 1;
+                    None;
+
+        territory = self.score_territory(state);
+        scores[1] += territory[1];
+        scores[2] += territory[2];
+
         if scores[1] > (self.N*self.N):
             raise ValueError("black scores more than board size");
         if scores[2] > (self.N*self.N):

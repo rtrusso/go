@@ -5,17 +5,18 @@ This is a python implementation of the board game Go. It is compatible
 with the same board game framework used by
 [ultimate_tictactoe](https://github.com/jbradberry/ultimate_tictactoe).
 
+The project attempts to correctly implement the basic rules: Area
+scoring, positional superko, and termination of the game triggered by
+2 consecutive passes.
+
 The idea with this project is to enable some experimentation with
 machine learning inspired by the AlphaGo and AlphaZero projects.
 
 Known Issues
 ------------
 
-The author doesn't actually know how to play Go and is attempting to
-write correct code based on rule specifications.
-
-- There is some bug with not allowing play in previously-captured intersections.
-- Scoring is not implemented correctly.
+- Performance is not great, plenty of opportunities to avoid allocations/copies.
+- Territory scoring is not supported.
 
 Requirements
 ------------

@@ -30,7 +30,6 @@ while len(legal) > 1:
 
     print(b.display(s,a2));
     print("{0} legal moves".format(len(legal)));
-    print("{0} played at {1}".format('Black' if player == 1 else 'White', j));
 
     history += [s];
     legal = b.legal_actions(history);
@@ -51,8 +50,14 @@ if not ended:
     print("Game not ended as expected");
 print("Game ends after {0} iterations".format(iter));
 
+delta_t = time() - t1;
+iters_per_sec = iter / delta_t;
 win = b.win_values(history);
-print("time: {0:.3f}s".format(time()-t1));
+print("time: {0:.3f}s - {1:.3f} iters/sec".format(delta_t, iters_per_sec));
+black_capped = history[-1][-4];
+white_capped = history[-1][-3];
+print("{0} black stones captured, {1} white stones captured".format(black_capped, white_capped));
+print("Territory: {0}".format(b.score_territory(s)));
 print("win_values: {0}".format(win));
 print("win message: {0}".format(b.winner_message(win)));
 print("");
